@@ -1,22 +1,18 @@
-from email.policy import HTTP
-import http
-from django.shortcuts import render
-from django.http import HttpResponse
 
-from .models import Product
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from rest_framework import status
-from datetime import datetime
+from django.shortcuts import render
+from rest_framework import viewsets
+from .models import Product, Offer
+from .serializers import ProductSerializer, OfferSerializer
 
 def index(request):
     products = Product.objects.all()
     return render(request, 'index.html', {'products':products})
 
-def newproduct(request):
-    return HttpResponse('this is new product')
+class ProductViewSet(viewsets.ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
 
-def return_time(request):
-    date = datetime.now()
-    message = 'server is live now, current time is'
-    return Response(data=message + date, status=status.HTTP_200_OK)
+
+class OfferViewSet(viewsets.ModelViewSet):
+    queryset = Offer.objects.all()
+    serializer_class = OfferSerializer
