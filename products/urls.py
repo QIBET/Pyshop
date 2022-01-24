@@ -9,7 +9,7 @@ router.register(r'offer_api', views.OfferViewSet),
 
 
 urlpatterns = [
-    path('products/', views.index ),
-    path('', include(router.urls)),
+    path('', views.index ),
+    path('api_root', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
