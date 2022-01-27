@@ -17,3 +17,6 @@ class Offer(models.Model):
     description = models.CharField(max_length=255)
     discount = models.FloatField()
 
+class Customer(models.Model):
+    customer_name = models.CharField(max_length=100)
+    customer_order = models.ForeignKey(Offer, on_delete= models.CASCADE, related_name='code')
