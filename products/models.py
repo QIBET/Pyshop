@@ -1,3 +1,4 @@
+import re
 from django.db import models
 
 class Product(models.Model):
@@ -19,4 +20,7 @@ class Offer(models.Model):
 
 class Customer(models.Model):
     customer_name = models.CharField(max_length=100)
-    customer_order = models.ForeignKey(Offer, on_delete= models.CASCADE, related_name='code')
+    location = models.CharField(max_length=100)
+    product_bought = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='bought')
+    product_offer =  models.ForeignKey(Offer, on_delete=models.CASCADE, related_name='offered')
+
