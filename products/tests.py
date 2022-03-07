@@ -20,5 +20,15 @@ class ProductTestCase(TestCase):
         products = Product.objects.all()
         self.assertTrue(len(products) > 0 )
 
+class OfferTestCase(TestCase):
+    def setUp(self):
+        self.new_offer = Offer(code = 'GJKHGNKNMMKLLNG', description = 'offer for frequent purchases', discount = '10.34')
 
+    def test_instance(self):
+        self.assertTrue(isinstance(self.new_offer, Offer))
+
+    def test_save_offer(self):
+        self.new_offer.save_offer()
+        offers = Offer.objects.all()
+        self.assertTrue(len(offers) > 0)
        

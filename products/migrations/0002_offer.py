@@ -2,6 +2,8 @@
 
 from django.db import migrations, models
 
+from products.models import Offer
+
 
 class Migration(migrations.Migration):
 
