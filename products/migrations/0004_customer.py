@@ -3,6 +3,8 @@
 from django.db import migrations, models
 import django.db.models.deletion
 
+from products.models import Customer
+
 
 class Migration(migrations.Migration):
 
@@ -22,3 +24,4 @@ class Migration(migrations.Migration):
             ],
         ),
     ]
+

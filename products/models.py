@@ -23,10 +23,15 @@ class Offer(models.Model):
 
     def save_offer(self):
         self.save()
-        
+
 class Customer(models.Model):
     customer_name = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
-    product_bought = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='bought')
-    product_offer =  models.ForeignKey(Offer, on_delete=models.CASCADE, related_name='offered')
+    product_bought = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='bought', null=True)
+    product_offer =  models.ForeignKey(Offer, on_delete=models.CASCADE, related_name='offered', null=True)
 
+    def __str__(self):
+        return self.customer_name
+
+    def save_customer(self):
+        self.save()

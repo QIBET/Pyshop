@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.test import TestCase
 
-from .models import Product, Offer
+from .models import Product, Offer,Customer
 
 '''
 Kindly check out the tests below if written correctly
@@ -32,3 +32,16 @@ class OfferTestCase(TestCase):
         offers = Offer.objects.all()
         self.assertTrue(len(offers) > 0)
        
+
+class CustomerTestCase(TestCase):
+    def setUp(self):
+        self.new_customer = Customer(customer_name = 'Lorraine', location = 'Nairobi')
+
+    def test_instance(self):
+        self.assertTrue(self.new_customer, Customer)
+
+    def test_save_customer(self):
+        self.new_customer.save_customer()
+        customers = Customer.objects.all()
+        self.assertTrue(len(customers) > 0)
+
