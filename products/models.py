@@ -35,3 +35,7 @@ class Customer(models.Model):
 
     def save_customer(self):
         self.save()
+    
+    def delete_customer(self):
+        self.save_customer()
+        self.delete()

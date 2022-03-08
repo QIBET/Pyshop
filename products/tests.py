@@ -45,3 +45,5 @@ class CustomerTestCase(TestCase):
         customers = Customer.objects.all()
         self.assertTrue(len(customers) > 0)
 
+
+
